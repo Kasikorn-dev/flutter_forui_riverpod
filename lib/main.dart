@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'screens/home_screen.dart';
+import 'package:forui/forui.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(ProviderScope(child: MyApp()));
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
-
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!13121'),
-        ),
+    return MaterialApp(
+      builder: (context, child) => FTheme(
+        data: FThemes.zinc.dark,
+        child: child!,
       ),
+      title: 'Flutter CRUD App',
+      // theme: ThemeData(primarySwatch: Colors.blue),
+      home: HomeScreen(),
     );
   }
 }
